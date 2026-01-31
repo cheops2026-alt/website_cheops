@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             const whatsappMessage = encodeURIComponent(`*Contact from Cheops Team Website*\n\n*Name:* ${name}\n*Email:* ${email}\n\n*Message:*\n${message}`);
-            const whatsappLink = `https://wa.me/20107075480?text=${whatsappMessage}`; // Replace with actual WhatsApp number
+            const whatsappLink = `https://wa.me/201070075480?text=${whatsappMessage}`; // Replace with actual WhatsApp number
 
             window.open(whatsappLink, '_blank');
             showContactMessage('Opening WhatsApp...', 'success');
@@ -164,4 +164,5 @@ document.addEventListener('DOMContentLoaded', function () {
         member.style.animationDelay = `${index * 0.1}s`;
     });
 });
+
 
