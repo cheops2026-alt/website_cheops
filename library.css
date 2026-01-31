@@ -1,0 +1,54 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #1a1410 0%, #2d2318 25%, #3f3420 50%, #2d2318 75%, #1a1410 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 20s ease infinite;
+  color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Animations */
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes titleGlow {
+  0%, 100% {
+    text-shadow: 0 4px 20px rgba(253, 185, 49, 0.6);
+  }
+  50% {
+    text-shadow: 0 4px 30px rgba(253, 185, 49, 0.9), 0 0 50px rgba(253, 185, 49, 0.5);
+  }
+}
+
+/* Heading */
+h1 {
+  font-size: 64px;
+  font-weight: 800;
+  color: #FDB931;
+  text-shadow: 0 4px 20px rgba(253, 185, 49, 0.6);
+  animation: fadeInDown 1s ease, titleGlow 3s ease-in-out infinite;
+  letter-spacing: 2px;
+}
