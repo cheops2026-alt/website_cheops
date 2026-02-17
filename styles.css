@@ -179,6 +179,8 @@ body{
   position: relative;
   overflow-x: hidden;
   min-height: 100vh;
+}
+
 a:hover {
   text-decoration: none;
 
@@ -392,58 +394,126 @@ display: none;
 /* Responsive Design for All Devices */
 @media screen and (max-width: 768px) {
   /* Mobile and Tablet Adjustments */
-  .card-3d-wrap {
-    max-width: 90% !important;
-    margin: 0 auto;
+  .row.justify-content-center {
+    min-height: auto !important;
+    padding: 10px 0 !important;
   }
-  
+
+  .card-3d-wrap {
+    width: 100%;
+    max-width: 430px !important;
+    height: 460px;
+    margin-top: 24px;
+    margin-bottom: 10px;
+  }
+
+  .center-wrap {
+    padding: 0 24px;
+  }
+
+  .form-style {
+    height: 50px;
+    font-size: 15px;
+    padding-left: 50px;
+  }
+
+  .input-icon {
+    left: 15px;
+    font-size: 22px;
+    line-height: 50px;
+    height: 50px;
+  }
+
+  .toggle-password {
+    right: 12px !important;
+  }
+
+  .btn {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 20px;
+    font-size: 13px;
+  }
+
+  img[alt="Pharaoh Logo"] {
+    height: 420px !important;
+  }
+
+  .psc-logo {
+    height: 90px !important;
+  }
+
+  .section {
+    padding: 8px 12px;
+  }
+
   h6 span {
     padding: 0 10px;
     font-size: 14px;
   }
-  
+
   h4 {
-    font-size: 20px;
-  }
-  
-  .form-style {
-    padding: 13px 20px;
-    font-size: 14px;
-  }
-  
-  .btn {
-    padding: 10px 25px;
-    font-size: 12px;
-  }
-  
-  /* Logo responsive */
-  .psc-logo {
-    height: 80px !important;
+    font-size: 22px;
   }
 }
 
 @media screen and (max-width: 480px) {
-  /* Small Mobile Devices */
   .section {
-    padding: 10px;
+    padding: 6px;
   }
-  
-  h6 span {
-    display: block;
-    padding: 5px 0;
-  }
-  
+
   .card-3d-wrap {
-    max-width: 95% !important;
+    max-width: 100% !important;
+    height: 490px;
+    margin: 0 auto;
   }
-  
-  /* Logo smaller on very small screens */
-  .psc-logo {
-    height: 60px !important;
+
+  .center-wrap {
+    padding: 0 16px;
   }
-  
+
+  h6 span {
+    padding: 0 8px;
+    font-size: 13px;
+  }
+
+  h4 {
+    font-size: 20px;
+  }
+
   .form-style {
-    padding: 10px 15px;
+    height: 48px;
+    font-size: 14px;
+    padding-left: 46px;
+  }
+
+  .input-icon {
+    left: 13px;
+    font-size: 20px;
+    line-height: 48px;
+    height: 48px;
+  }
+
+  .toggle-password {
+    font-size: 16px !important;
+  }
+
+  .btn {
+    height: 46px;
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+
+  img[alt="Pharaoh Logo"] {
+    height: 280px !important;
+    opacity: 0.22;
+  }
+
+  .psc-logo {
+    height: 70px !important;
+  }
+
+  p {
     font-size: 13px;
   }
 }
@@ -500,5 +570,4 @@ html {
   opacity: 1;
   color: #FFD700 !important;
   text-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
-}
 }
