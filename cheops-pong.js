@@ -1,5 +1,8 @@
 const canvas = document.getElementById('pongCanvas');
 const ctx = canvas.getContext('2d');
+const pauseBtn = document.getElementById('pauseBtn');
+const restartBtn = document.getElementById('restartBtn');
+const WINNING_SCORE = 10;
 
 const state = {
   paddleWidth: 16,
@@ -8,11 +11,13 @@ const state = {
   aiY: 0,
   playerScore: 0,
   aiScore: 0,
+  paused: false,
+  gameOver: false,
   ball: {
     x: 0,
     y: 0,
-    vx: 8,
-    vy: 4,
+    vx: 4.2,
+    vy: 2,
     r: 10
   }
 };
@@ -48,14 +53,21 @@ function resetPositions() {
 function resetBall(direction = 1) {
   state.ball.x = canvas.width / 2;
   state.ball.y = canvas.height / 2;
-  const baseSpeed = 7;
+  const baseSpeed = 4.2;
   state.ball.vx = baseSpeed * direction;
-  state.ball.vy = (Math.random() * 4 - 2) || 1.5;
+  state.ball.vy = (Math.random() * 2.4 - 1.2) || 1;
 }
 
 function clampPaddles() {
   state.playerY = Math.max(0, Math.min(canvas.height - state.paddleHeight, state.playerY));
   state.aiY = Math.max(0, Math.min(canvas.height - state.paddleHeight, state.aiY));
+}
+
+function endGame(message) {
+  state.gameOver = true;
+  state.paused = true;
+  pauseBtn.textContent = 'Pause';
+  window.alert(message);
 }
 
 function update() {
@@ -75,9 +87,9 @@ function update() {
     b.y >= state.playerY &&
     b.y <= state.playerY + state.paddleHeight
   ) {
-    b.vx = Math.abs(b.vx) + 0.25;
+    b.vx = Math.abs(b.vx) + 0.12;
     const hit = (b.y - (state.playerY + state.paddleHeight / 2)) / (state.paddleHeight / 2);
-    b.vy += hit * 2.2;
+    b.vy += hit * 1.4;
   }
 
   // ai collision
@@ -87,18 +99,26 @@ function update() {
     b.y >= state.aiY &&
     b.y <= state.aiY + state.paddleHeight
   ) {
-    b.vx = -Math.abs(b.vx) - 0.25;
+    b.vx = -Math.abs(b.vx) - 0.12;
     const hit = (b.y - (state.aiY + state.paddleHeight / 2)) / (state.paddleHeight / 2);
-    b.vy += hit * 2.2;
+    b.vy += hit * 1.4;
   }
 
   if (b.x < -30) {
     state.aiScore += 1;
+    if (state.aiScore >= WINNING_SCORE) {
+      endGame('Cheops win ');
+      return;
+    }
     resetBall(1);
   }
 
   if (b.x > canvas.width + 30) {
     state.playerScore += 1;
+    if (state.playerScore >= WINNING_SCORE) {
+      endGame('you win !!');
+      return;
+    }
     resetBall(-1);
   }
 
@@ -144,7 +164,9 @@ function draw() {
 }
 
 function loop() {
-  update();
+  if (!state.paused && !state.gameOver) {
+    update();
+  }
   draw();
   requestAnimationFrame(loop);
 }
@@ -165,6 +187,23 @@ canvas.addEventListener('touchmove', (e) => {
   e.preventDefault();
   setPlayerFromClientY(e.touches[0].clientY);
 }, { passive: false });
+
+pauseBtn.addEventListener('click', () => {
+  if (state.gameOver) {
+    return;
+  }
+  state.paused = !state.paused;
+  pauseBtn.textContent = state.paused ? 'Resume' : 'Pause';
+});
+
+restartBtn.addEventListener('click', () => {
+  state.playerScore = 0;
+  state.aiScore = 0;
+  state.gameOver = false;
+  state.paused = false;
+  pauseBtn.textContent = 'Pause';
+  resetPositions();
+});
 
 window.addEventListener('resize', resizeCanvas);
 window.addEventListener('orientationchange', resizeCanvas);

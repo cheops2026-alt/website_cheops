@@ -60,6 +60,29 @@ body {
   flex-wrap: wrap;
 }
 
+.game-controls {
+  margin-top: 14px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.game-control-btn {
+  color: #1a1410;
+  background: linear-gradient(135deg, #FDB931, #FFD700);
+  border: 2px solid #B8860B;
+  border-radius: 24px;
+  padding: 10px 16px;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+}
+
+.game-control-btn:hover {
+  background: linear-gradient(135deg, #FFD700, #FFA500);
+}
+
 .nav-btn {
   color: #1a1410;
   background: linear-gradient(135deg, #FDB931, #FFD700);
@@ -100,6 +123,10 @@ body {
   .nav-btn {
     width: 100%;
     text-align: center;
+  }
+
+  .game-control-btn {
+    width: 100%;
   }
 }
 
