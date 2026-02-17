@@ -1,0 +1,105 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #1a1410 0%, #2d2318 25%, #3f3420 50%, #2d2318 75%, #1a1410 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 20s ease infinite;
+  color: #f5f5f5;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.pong-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 28px 16px 40px;
+}
+
+.pong-header {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.pong-header h1 {
+  color: #FDB931;
+  margin-bottom: 6px;
+  font-size: 38px;
+}
+
+.canvas-wrap {
+  background: rgba(20, 16, 12, 0.85);
+  border: 2px solid rgba(253, 185, 49, 0.35);
+  border-radius: 14px;
+  padding: 10px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+}
+
+#pongCanvas {
+  width: 100%;
+  display: block;
+  border-radius: 10px;
+  background: rgba(10, 8, 6, 0.95);
+  touch-action: none;
+}
+
+.nav-buttons {
+  margin-top: 16px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.nav-btn {
+  color: #1a1410;
+  background: linear-gradient(135deg, #FDB931, #FFD700);
+  border: 2px solid #B8860B;
+  border-radius: 24px;
+  padding: 10px 16px;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.nav-btn:hover {
+  background: linear-gradient(135deg, #FFD700, #FFA500);
+}
+
+@media (max-width: 700px) {
+  .pong-header h1 {
+    font-size: 30px;
+  }
+
+  .pong-page {
+    padding: 20px 10px 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pong-header h1 {
+    font-size: 24px;
+  }
+
+  .pong-header p {
+    font-size: 13px;
+  }
+
+  .canvas-wrap {
+    padding: 6px;
+  }
+
+  .nav-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+

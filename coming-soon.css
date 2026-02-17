@@ -1,0 +1,133 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #1a1410 0%, #2d2318 25%, #3f3420 50%, #2d2318 75%, #1a1410 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 20s ease infinite;
+  color: #f5f5f5;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(20, 16, 12, 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 2px solid rgba(253, 185, 49, 0.3);
+}
+
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  color: #FDB931;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.nav-links a {
+  color: #f5f5f5;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 20px;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: #1a1410;
+  background: linear-gradient(135deg, #FDB931, #FFD700);
+  border-color: #B8860B;
+}
+
+.coming-page {
+  min-height: calc(100vh - 70px);
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.coming-card {
+  width: min(620px, 100%);
+  text-align: center;
+  background: rgba(20, 16, 12, 0.86);
+  border: 2px solid rgba(253, 185, 49, 0.3);
+  border-radius: 16px;
+  padding: 28px 24px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+.coming-card h1 {
+  color: #FDB931;
+  margin-bottom: 10px;
+}
+
+.coming-card p {
+  color: #efe7db;
+  margin-bottom: 18px;
+}
+
+.back-btn {
+  display: inline-block;
+  color: #1a1410;
+  background: linear-gradient(135deg, #FDB931, #FFD700);
+  border: 2px solid #B8860B;
+  border-radius: 24px;
+  padding: 10px 18px;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.back-btn:hover {
+  background: linear-gradient(135deg, #FFD700, #FFA500);
+}
+
+@media (max-width: 700px) {
+  .nav-inner {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .nav-links {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .coming-card {
+    padding: 22px 16px;
+  }
+
+  .back-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+

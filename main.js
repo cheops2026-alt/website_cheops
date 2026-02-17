@@ -4,48 +4,80 @@ document.addEventListener('DOMContentLoaded', function () {
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('.section');
 
-    // Function to show a specific section
-    function showSection(sectionId) {
-        // Remove active class from all sections and nav links
-        sections.forEach(section => {
-            section.classList.remove('active-section');
-        });
+    // Function to highlight active nav link
+    function setActiveNav(sectionId) {
         navLinks.forEach(link => {
             link.classList.remove('active');
         });
-
-        // Add active class to target section and nav link
-        const targetSection = document.getElementById(sectionId);
         const targetLink = document.querySelector(`a[href="#${sectionId}"]`);
-
-        if (targetSection) {
-            targetSection.classList.add('active-section');
-        }
         if (targetLink) {
             targetLink.classList.add('active');
         }
     }
 
-    // Add click event listeners to navigation links
-    navLinks.forEach(link => {
-        link.addEventListener('click', function (e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href').substring(1); // Remove the '#'
-            showSection(targetId);
+    // Make sure all sections are visible for normal page scrolling.
+    sections.forEach(section => {
+        section.classList.add('active-section');
+    });
 
-            // Update URL hash without scrolling
-            history.pushState(null, null, `#${targetId}`);
+    // Smooth scroll for in-page anchor links (home buttons + nav links).
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            const target = href ? document.querySelector(href) : null;
+            if (!target) {
+                return;
+            }
+            e.preventDefault();
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+            if (target.id) {
+                setActiveNav(target.id);
+                history.pushState(null, '', `#${target.id}`);
+            }
         });
     });
 
-    // Handle initial load - check URL hash or default to home
+    // Keep nav state in sync while scrolling.
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                setActiveNav(entry.target.id);
+            }
+        });
+    }, {
+        threshold: 0.45
+    });
+    sections.forEach((section) => sectionObserver.observe(section));
+
+    // Handle initial load - scroll to hash if present.
     const initialSection = window.location.hash.substring(1) || 'home';
-    showSection(initialSection);
+    const initialTarget = document.getElementById(initialSection);
+    if (initialTarget) {
+        setActiveNav(initialSection);
+        if (window.location.hash) {
+            setTimeout(() => {
+                initialTarget.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }, 50);
+        }
+    }
 
     // Handle browser back/forward buttons
     window.addEventListener('popstate', function () {
         const section = window.location.hash.substring(1) || 'home';
-        showSection(section);
+        const target = document.getElementById(section);
+        if (target) {
+            setActiveNav(section);
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
     });
 
     // Language toggle functionality
@@ -143,20 +175,6 @@ document.addEventListener('DOMContentLoaded', function () {
             }, 3000);
         }
     }
-
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                e.preventDefault();
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    });
 
     // Add animation delays to team members
     const teamMembers = document.querySelectorAll('.team-member');

@@ -43,7 +43,7 @@
 	</header>
 
 	<!-- Home Section -->
-	<section id="home" class="section-home active-section">
+	<section id="home" class="section section-home active-section">
 		<div class="home-content">
 			<h1 class="welcome-title" data-en="Welcome to Cheops Team" data-ar="مرحباً بكم في فريق كيوبس">
 				Welcome to Cheops Team
@@ -75,7 +75,7 @@
 	</section>
 
 	<!-- Project Section -->
-<section id="project" class="section-project">
+<section id="project" class="section section-project">
   <!-- Animated Gears Background -->
   <div class="gear-container">
     <div class="gear gear-1"></div>
@@ -86,19 +86,15 @@
     <h2 class="section-title" data-en="Our Project" data-ar="مشروعنا">
       Our Project
     </h2>
-    <div style="display: flex; align-items: center; gap: 30px;">
-      <div style="width: 50%;">
-        <p style="font-size: 20px;">
-          Our project is about creating a 3D scanner that can scan any object
-          and create a 3D model of it.
+    <div class="project-content">
+      <div class="project-text">
+        <p class="project-description" data-en="Our project is about creating a 3D scanner that can scan any object and create a 3D model of it." data-ar="مشروعنا يهدف إلى إنشاء ماسح ضوئي ثلاثي الأبعاد يمكنه مسح أي جسم وإنشاء نموذج ثلاثي الأبعاد له.">
+          Our project is about creating a 3D scanner that can scan any object and create a 3D model of it.
         </p>
-		<a href="library.html" class="custom-btn" data-en="More" data-ar="المزيد" >More</a>
-
+        <a href="library.html" class="custom-btn" data-en="More" data-ar="المزيد">More</a>
       </div>
-      <div>
-        <img src="./assets/Smart3DScanner.png"
-             alt="Smart 3D Scanner"
-             style="height: 300px; width: 500px;">
+      <div class="project-media">
+        <img src="assets/Smart3DScanner.png" alt="Smart 3D Scanner Project" class="project-model-viewer project-model-image">
       </div>
     </div>
   </div>
@@ -107,7 +103,7 @@
 
 
 	<!-- Team Section -->
-	<section id="team" class="section-team">
+	<section id="team" class="section section-team">
 		<!-- Animated Constellation Background -->
 		<div class="constellation">
 			<div class="star-line"></div>
@@ -248,45 +244,41 @@
 				<!-- Team Member 11 -->
 				<div class="team-member">
 					<div class="member-image">
-						<img src="picsart_25-11-21_23-37-11-910.png" alt="Team Member 11">
+						<img src="./assets/eng badran.jpeg" alt="Team Member 11">
 					</div>
 					<h3 class="member-name" data-en="Member Name 11" data-ar="اسم العضو 11">Mohamed Badran</h3>
 					<p class="member-role" data-en="Analyst" data-ar="المدرب">Coach</p>
-					<p class="member-desc" data-en=""
-						>
-					</p>
+					<p class="member-desc" data-en="" data-ar=""></p>
 				</div>
 
 				<!-- Team Member 12 -->
 				<div class="team-member">
 					<div class="member-image">
-						<img src="picsart_25-11-21_23-37-11-910.png" alt="Team Member 12">
+						<img src="./assets/youssef.jpeg" alt="Team Member 12">
 					</div>
 					<h3 class="member-name" data-en="Member Name 12" data-ar="اسم العضو 12">Youssef Sayed</h3>
 					<p class="member-role" data-en="Support" data-ar="المشرف">Mentor</p>
-					<p class="member-desc" data-en=""
-						>
-					</p>
+					<p class="member-desc" data-en="" data-ar=""></p>
 				</div>
 
 				<!-- Team Member 13 -->
 				<div class="team-member">
 					<div class="member-image">
-						<img src="picsart_25-11-21_23-37-11-910.png" alt="Team Member 13">
+						<img src="./assets/nadeem.jpeg" alt="Team Member 13">
 					</div>
 					<h3 class="member-name" data-en="Member Name 13" data-ar="اسم العضو 13">Nadeem Mohamed</h3>
 					<p class="member-role" data-en="Innovator" data-ar="المشرف">Mentor</p>
-					<p class="member-desc" data-en=""
-						>
-						
-					</p>
+					<p class="member-desc" data-en="" data-ar=""></p>
 				</div>
+			</div>
+			<div class="team-actions">
+				<a href="play.html" class="custom-btn" data-en="Play with us" data-ar="العب معنا">Play with us</a>
 			</div>
 		</div>
 	</section>
 
 	<!-- Contact Section -->
-	<section id="contact" class="section-contact">
+	<section id="contact" class="section section-contact">
 		<!-- Animated Wave Background -->
 		<div class="wave-container">
 			<div class="wave wave-1"></div>
@@ -324,7 +316,7 @@
 						</button>
 					</div>
 				</form>
-				<div id="contactMessage" class="contact-feedback" style="display:none;"></div>
+				<div id="contactFeedback" class="contact-feedback" style="display:none;"></div>
 			</div>
 
 			<!-- Social Media Icons -->
