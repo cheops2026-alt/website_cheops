@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cheops Library</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="library.css">
 </head>
 <body>
@@ -15,83 +16,140 @@
                 <a href="home.html">Home</a>
                 <a href="library.html" class="active">Library</a>
             </nav>
+            <button id="langToggle" class="lang-btn" title="Toggle language">
+                <span id="currentLang">EN</span>
+                <i class="fas fa-globe"></i>
+            </button>
         </div>
     </header>
 
     <main class="library-page">
         <section class="hero">
-            <h1>Project Library</h1>
-            <p>Explore our 3D scanner collection and future museum models.</p>
+            <h1 data-en="Project Library" data-ar="مكتبة المشروع">Project Library</h1>
+            <p data-en="Explore our 3D scanner collection and future museum models."
+               data-ar="استكشف مجموعة الماسح الضوئي ثلاثي الأبعاد ونماذج المتحف المستقبلية.">
+                Explore our 3D scanner collection and future museum models.
+            </p>
         </section>
 
         <section class="cards-grid">
             <article class="card">
                 <img src="./assets/Screenshot 2026-02-13 225038.png" alt="King Tutankhamun death mask" class="card-image">
                 <div class="card-content">
-                    <h2>King Tutankhamun</h2>
-                    <p>A detailed 3D object for learning and exploration.</p>
-                    <a href="coming-soon.html" class="explore-btn">Explore Me</a>
+                    <h2 data-en="King Tutankhamun" data-ar="الملك توت عنخ آمون">King Tutankhamun</h2>
+                    <p data-en="A detailed 3D object for learning and exploration."
+                       data-ar="نموذج ثلاثي الأبعاد مفصل للتعلم والاستكشاف.">
+                        A detailed 3D object for learning and exploration.
+                    </p>
+                    <a href="3d-model.html" class="explore-btn"
+                       data-en="Explore Me" data-ar="استكشفني">Explore Me</a>
                 </div>
             </article>
 
             <article class="card coming-soon">
-                <div class="card-image placeholder">Coming Soon</div>
+                <div class="card-image placeholder" data-en="Coming Soon" data-ar="قريباً">Coming Soon</div>
                 <div class="card-content">
-                    <h2>Ancient Statue Scan</h2>
-                    <p>New 3D model will be uploaded soon.</p>
-                    <button class="soon-btn" type="button" disabled>Coming Soon</button>
+                    <h2 data-en="Ancient Statue Scan" data-ar="مسح تمثال قديم">Ancient Statue Scan</h2>
+                    <p data-en="New 3D model will be uploaded soon."
+                       data-ar="سيتم رفع نموذج ثلاثي الأبعاد جديد قريباً.">
+                        New 3D model will be uploaded soon.
+                    </p>
+                    <button class="soon-btn" type="button" disabled
+                            data-en="Coming Soon" data-ar="قريباً">Coming Soon</button>
                 </div>
             </article>
 
             <article class="card coming-soon">
-                <div class="card-image placeholder">Coming Soon</div>
+                <div class="card-image placeholder" data-en="Coming Soon" data-ar="قريباً">Coming Soon</div>
                 <div class="card-content">
-                    <h2>Pyramid Artifact</h2>
-                    <p>We are preparing this card for the next update.</p>
-                    <button class="soon-btn" type="button" disabled>Coming Soon</button>
+                    <h2 data-en="Pyramid Artifact" data-ar="قطعة أثرية من الهرم">Pyramid Artifact</h2>
+                    <p data-en="We are preparing this card for the next update."
+                       data-ar="نحن نُعد هذه البطاقة للتحديث القادم.">
+                        We are preparing this card for the next update.
+                    </p>
+                    <button class="soon-btn" type="button" disabled
+                            data-en="Coming Soon" data-ar="قريباً">Coming Soon</button>
                 </div>
             </article>
 
             <article class="card coming-soon">
-                <div class="card-image placeholder">Coming Soon</div>
+                <div class="card-image placeholder" data-en="Coming Soon" data-ar="قريباً">Coming Soon</div>
                 <div class="card-content">
-                    <h2>Historic Tool</h2>
-                    <p>This model card will be available soon.</p>
-                    <button class="soon-btn" type="button" disabled>Coming Soon</button>
+                    <h2 data-en="Historic Tool" data-ar="أداة تاريخية">Historic Tool</h2>
+                    <p data-en="This model card will be available soon."
+                       data-ar="ستتوفر بطاقة هذا النموذج قريباً.">
+                        This model card will be available soon.
+                    </p>
+                    <button class="soon-btn" type="button" disabled
+                            data-en="Coming Soon" data-ar="قريباً">Coming Soon</button>
                 </div>
             </article>
 
             <article class="card coming-soon">
-                <div class="card-image placeholder">Coming Soon</div>
+                <div class="card-image placeholder" data-en="Coming Soon" data-ar="قريباً">Coming Soon</div>
                 <div class="card-content">
-                    <h2>Golden Sarcophagus</h2>
-                    <p>This object scan will be published in the next release.</p>
-                    <button class="soon-btn" type="button" disabled>Coming Soon</button>
+                    <h2 data-en="Golden Sarcophagus" data-ar="التابوت الذهبي">Golden Sarcophagus</h2>
+                    <p data-en="This object scan will be published in the next release."
+                       data-ar="سيُنشر مسح هذا الكائن في الإصدار القادم.">
+                        This object scan will be published in the next release.
+                    </p>
+                    <button class="soon-btn" type="button" disabled
+                            data-en="Coming Soon" data-ar="قريباً">Coming Soon</button>
                 </div>
             </article>
 
             <article class="card coming-soon">
-                <div class="card-image placeholder">Coming Soon</div>
+                <div class="card-image placeholder" data-en="Coming Soon" data-ar="قريباً">Coming Soon</div>
                 <div class="card-content">
-                    <h2>Temple Relief</h2>
-                    <p>High-resolution model currently under processing.</p>
-                    <button class="soon-btn" type="button" disabled>Coming Soon</button>
+                    <h2 data-en="Temple Relief" data-ar="نقش المعبد">Temple Relief</h2>
+                    <p data-en="High-resolution model currently under processing."
+                       data-ar="نموذج عالي الدقة قيد المعالجة حالياً.">
+                        High-resolution model currently under processing.
+                    </p>
+                    <button class="soon-btn" type="button" disabled
+                            data-en="Coming Soon" data-ar="قريباً">Coming Soon</button>
                 </div>
             </article>
 
             <article class="card coming-soon">
-                <div class="card-image placeholder">Coming Soon</div>
+                <div class="card-image placeholder" data-en="Coming Soon" data-ar="قريباً">Coming Soon</div>
                 <div class="card-content">
-                    <h2>Pharaoh Crown</h2>
-                    <p>This card is reserved for an upcoming museum artifact.</p>
-                    <button class="soon-btn" type="button" disabled>Coming Soon</button>
+                    <h2 data-en="Pharaoh Crown" data-ar="تاج الفرعون">Pharaoh Crown</h2>
+                    <p data-en="This card is reserved for an upcoming museum artifact."
+                       data-ar="هذه البطاقة محجوزة لقطعة أثرية قادمة من المتحف.">
+                        This card is reserved for an upcoming museum artifact.
+                    </p>
+                    <button class="soon-btn" type="button" disabled
+                            data-en="Coming Soon" data-ar="قريباً">Coming Soon</button>
                 </div>
             </article>
         </section>
 
         <section class="try-section">
-            <a href="try-us.html" class="try-btn">Try Us</a>
+            <a href="try-us.html" class="try-btn"
+               data-en="Try Us" data-ar="جربنا">Try Us</a>
+            <a href="3d-model.html" class="try-btn buy-btn"
+               data-en="Buy Now" data-ar="اشترِ الآن">Buy Now</a>
         </section>
     </main>
+
+    <script>
+        const langToggle = document.getElementById('langToggle');
+        const currentLangEl = document.getElementById('currentLang');
+        let isEnglish = true;
+
+        langToggle.addEventListener('click', () => {
+            isEnglish = !isEnglish;
+            const lang = isEnglish ? 'en' : 'ar';
+            currentLangEl.textContent = isEnglish ? 'EN' : 'AR';
+            document.documentElement.lang = lang;
+            document.body.classList.toggle('rtl', !isEnglish);
+
+            document.querySelectorAll('[data-en]').forEach(el => {
+                const text = el.getAttribute(`data-${lang}`);
+                if (text) el.textContent = text;
+            });
+        });
+    </script>
 </body>
 </html>

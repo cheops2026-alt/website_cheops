@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore - 3D Model</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="3d-model.css">
+</head>
+<body>
+    <header class="top-nav">
+        <div class="nav-inner">
+            <a href="home.html" class="brand">Cheops Library</a>
+            <nav class="nav-links">
+                <a href="home.html">Home</a>
+                <a href="library.html">Library</a>
+                <a href="3d-model.html" class="active">Explore</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="coming-page">
+        <section class="coming-card">
+            <h1>Explore Model</h1>
+            <p>Drag to rotate, scroll to zoom, and right-click drag to pan around the model.</p>
+            <div class="explore-model-viewer" id="exploreModelViewer" aria-label="Interactive 3D mask model">
+                <div class="viewer-status" id="exploreViewerStatus">Loading 3D model...</div>
+                <div class="axes-hud" id="axesHud">
+                    <span class="axis-x">X: <span id="axisX">0.00</span></span>
+                    <span class="axis-y">Y: <span id="axisY">0.00</span></span>
+                    <span class="axis-z">Z: <span id="axisZ">0.00</span></span>
+                </div>
+            </div>
+            <a href="library.html" class="back-btn">Back To Library</a>
+        </section>
+    </main>
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+            "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+        }
+    }
+    </script>
+    <script type="module" src="explore-viewer.js"></script>
+</body>
+</html>

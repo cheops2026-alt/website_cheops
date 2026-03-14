@@ -35,6 +35,35 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 12px;
+}
+
+.lang-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(253, 185, 49, 0.12);
+  border: 1px solid rgba(253, 185, 49, 0.45);
+  color: #FDB931;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.lang-btn:hover {
+  background: rgba(253, 185, 49, 0.25);
+  border-color: #FDB931;
+}
+
+body.rtl {
+  direction: rtl;
+  text-align: right;
 }
 
 .brand {
@@ -171,6 +200,8 @@ body {
 .try-section {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
   margin-top: 28px;
 }
 
@@ -189,6 +220,15 @@ body {
 .try-btn:hover {
   background: linear-gradient(135deg, #FFD700, #FFA500);
   transform: translateY(-3px);
+}
+
+.buy-btn {
+  background: linear-gradient(135deg, #2a5caa, #1e3f80);
+  border-color: #1a347a;
+}
+
+.buy-btn:hover {
+  background: linear-gradient(135deg, #3a72cc, #2a5caa);
 }
 
 @media (max-width: 700px) {

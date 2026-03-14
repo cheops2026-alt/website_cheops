@@ -36,7 +36,13 @@
 					<i class="fas fa-globe"></i>
 				</button>
 				<button id="signOutBtn" class="signout-btn" data-en="Sign Out" data-ar="تسجيل الخروج">
-					Sign Out
+					<i class="fas fa-sign-out-alt"></i>
+					<span class="btn-text">Sign Out</span>
+				</button>
+				<button id="menuToggle" class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+					<span></span>
+					<span></span>
+					<span></span>
 				</button>
 			</div>
 		</div>
@@ -88,13 +94,20 @@
     </h2>
     <div class="project-content">
       <div class="project-text">
-        <p class="project-description" data-en="Our project is about creating a 3D scanner that can scan any object and create a 3D model of it." data-ar="مشروعنا يهدف إلى إنشاء ماسح ضوئي ثلاثي الأبعاد يمكنه مسح أي جسم وإنشاء نموذج ثلاثي الأبعاد له.">
-          Our project is about creating a 3D scanner that can scan any object and create a 3D model of it.
+        <p class="project-description" data-en="Our project features a portable mechanism designed to assist archaeologists in exploring ancient artifacts. It is built around the building and includes a mounted camera that moves vertically and rotates, capturing images from various angles. By utilizing Photogrammetry and 3D Scanning technologies, we create highly accurate models. This system also supports the deconstruction, relocation, and reconstruction of monuments through Reverse Engineering, ensuring their preservation during every step of the process" data-ar="يتميز مشروعنا بآلية محمولة مصممة لمساعدة علماء الآثار في استكشاف المباني القديمة. حيث يتم بناؤها حول المبنى وتتضمن كاميرا مثبتة تتحرك رأسياً وتدور، لتلتقط صوراً من زوايا مختلفة. ومن خلال استخدام تقنيات 'الفوتوجرامتري' والمسح ثلاثي الأبعاد ، نقوم بإنشاء نماذج دقيقة للغاية. كما يدعم هذا النظام عمليات تفكيك ونقل وإعادة تركيب الآثار عن طريق الهندسة العكسية ، مما يضمن الحفاظ عليها خلال كل خطوة من خطوات العملية.
+
+		">
+			Our project features a portable mechanism designed to assist archaeologists in exploring ancient artifacts. It is built around the building and includes a mounted camera that moves vertically and rotates, capturing images from various angles. By utilizing Photogrammetry and 3D Scanning technologies, we create highly accurate models. This system also supports the deconstruction, relocation, and reconstruction of monuments through Reverse Engineering, ensuring their preservation during every step of the process.
         </p>
-        <a href="library.html" class="custom-btn" data-en="More" data-ar="المزيد">More</a>
+        <div class="project-btn-group">
+          <a href="library.html" class="custom-btn" data-en="More" data-ar="المزيد">More</a>
+          <a href="https://docs.google.com/document/d/1c3n4SrK9uvxUU-RP2LWXKinUeTuIf2t6/edit" target="_blank" class="custom-btn research-btn" data-en="Research Paper" data-ar="ورقة البحث">Research Paper</a>
+        </div>
       </div>
       <div class="project-media">
-        <img src="assets/Smart3DScanner.png" alt="Smart 3D Scanner Project" class="project-model-viewer project-model-image">
+        <div class="project-model-viewer" id="homeModelViewer" aria-label="Interactive 3D scanner model">
+          <div class="viewer-status" id="homeViewerStatus">Loading 3D model...</div>
+        </div>
       </div>
     </div>
   </div>
@@ -264,7 +277,7 @@
 				<!-- Team Member 13 -->
 				<div class="team-member">
 					<div class="member-image">
-						<img src="./assets/nadeem.jpeg" alt="Team Member 13">
+						<img src="./assets/nadeem1.jpeg" alt="Team Member 13">
 					</div>
 					<h3 class="member-name" data-en="Member Name 13" data-ar="اسم العضو 13">Nadeem Mohamed</h3>
 					<p class="member-role" data-en="Innovator" data-ar="المشرف">Mentor</p>
@@ -333,6 +346,9 @@
 					target="_blank" class="social-icon tiktok" title="TikTok">
 					<i class="fab fa-tiktok"></i>
 				</a>
+				<a href="https://github.com/cheops2026-alt" target="_blank" class="social-icon github" title="GitHub">
+					<i class="fab fa-github"></i>
+				</a>
 				<a href="cheops2026@gmail.com" class="social-icon email" title="Email">
 					<i class="fas fa-envelope"></i>
 				</a>
@@ -346,6 +362,14 @@
 	</section>
 
 	<!-- Scripts -->
+	<script type="importmap">
+	{
+		"imports": {
+			"three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+			"three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+		}
+	}
+	</script>
 	<script type="module">
 		// Firebase Configuration
 		import { initializeApp } from 'https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js';
@@ -383,6 +407,7 @@
 			}
 		});
 	</script>
+	<script type="module" src="home-viewer.js"></script>
 	<script src="main.js"></script>
 </body>
 

@@ -181,6 +181,36 @@ document.addEventListener('DOMContentLoaded', function () {
     teamMembers.forEach((member, index) => {
         member.style.animationDelay = `${index * 0.1}s`;
     });
+
+    // Hamburger menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const headerNav = document.querySelector('.header-nav');
+
+    if (menuToggle && headerNav) {
+        menuToggle.addEventListener('click', () => {
+            const isOpen = headerNav.classList.toggle('nav-open');
+            menuToggle.classList.toggle('menu-open', isOpen);
+            menuToggle.setAttribute('aria-expanded', isOpen);
+        });
+
+        // Close menu when a nav link is clicked
+        headerNav.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                headerNav.classList.remove('nav-open');
+                menuToggle.classList.remove('menu-open');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        // Close menu when clicking outside the header
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.main-header')) {
+                headerNav.classList.remove('nav-open');
+                menuToggle.classList.remove('menu-open');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+    }
 });
 
 

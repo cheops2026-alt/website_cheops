@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Try Us - Coming Soon</title>
+    <title>Try Us - Cheops</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="try-us.css">
 </head>
 <body>
@@ -19,15 +20,65 @@
         </div>
     </header>
 
-    <main class="coming-page">
-        <section class="coming-card">
-            <h1>Try Us</h1>
-            <p>This feature is under development and will be available soon.</p>
+    <main class="try-page">
+        <section class="try-card">
+            <h1 class="try-title">Try Our 3D Scanner</h1>
+            <p class="try-subtitle">Choose how you want to experience our photogrammetry project.</p>
+
+            <!-- Level 1: main two choices -->
+            <div class="btn-row" id="mainChoices">
+                <a href="https://github.com/cheops2026-alt/Photogrammetric-3D-Model-"
+                   target="_blank" class="choice-btn code-btn">
+                    <i class="fab fa-github"></i>
+                    <span>Get the Code</span>
+                    <small>View & download on GitHub</small>
+                </a>
+                <button class="choice-btn here-btn" id="tryHereBtn" type="button">
+                    <i class="fas fa-flask"></i>
+                    <span>Try Here</span>
+                    <small>Run it directly in the browser</small>
+                </button>
+            </div>
+
+            <!-- Level 2: sub-options shown after "Try Here" click -->
+            <div class="sub-choices" id="subChoices">
+                <p class="sub-label">How would you like to try it?</p>
+                <div class="btn-row">
+                    <a href="try-device.html" class="choice-btn device-btn">
+                        <i class="fas fa-camera"></i>
+                        <span>Try on Your Device</span>
+                        <small>Use your own camera &amp; images</small>
+                    </a>
+                    <a href="coming-soon.html" class="choice-btn project-btn">
+                        <i class="fas fa-cube"></i>
+                        <span>Try at the Project</span>
+                        <small>Explore the ready 3D model</small>
+                    </a>
+                </div>
+                <button class="back-sub-btn" id="backSubBtn" type="button">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+            </div>
+
             <a href="library.html" class="back-btn">Back To Library</a>
         </section>
     </main>
+
+    <script>
+        const tryHereBtn = document.getElementById('tryHereBtn');
+        const mainChoices = document.getElementById('mainChoices');
+        const subChoices = document.getElementById('subChoices');
+        const backSubBtn = document.getElementById('backSubBtn');
+
+        tryHereBtn.addEventListener('click', () => {
+            mainChoices.classList.add('hidden');
+            subChoices.classList.add('visible');
+        });
+
+        backSubBtn.addEventListener('click', () => {
+            subChoices.classList.remove('visible');
+            mainChoices.classList.remove('hidden');
+        });
+    </script>
 </body>
 </html>
-
-
-

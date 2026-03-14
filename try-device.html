@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Try on Your Device - Cheops</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="try-device.css">
+</head>
+<body>
+    <header class="top-nav">
+        <div class="nav-inner">
+            <a href="home.html" class="brand">Cheops Library</a>
+            <nav class="nav-links">
+                <a href="home.html">Home</a>
+                <a href="library.html">Library</a>
+                <a href="try-us.html">Try Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="device-page">
+
+        <!-- ── SECTION 1: Browser Camera ── -->
+        <section class="device-section camera-section">
+            <div class="section-header">
+                <i class="fas fa-camera section-icon"></i>
+                <h2>Capture with Your Camera</h2>
+                <p>Take a photo of any object. The image is processed locally — nothing is uploaded.</p>
+            </div>
+
+            <div class="camera-wrapper">
+                <!-- State: start -->
+                <div class="cam-state" id="stateStart">
+                    <button class="big-btn cam-start-btn" id="startCamBtn">
+                        <i class="fas fa-video"></i>
+                        Open Camera
+                    </button>
+                    <p class="hint">Your browser will ask for camera permission.</p>
+                </div>
+
+                <!-- State: live preview -->
+                <div class="cam-state hidden" id="stateLive">
+                    <div class="video-frame">
+                        <video id="camVideo" autoplay playsinline muted></video>
+                        <div class="video-overlay">
+                            <div class="corner corner-tl"></div>
+                            <div class="corner corner-tr"></div>
+                            <div class="corner corner-bl"></div>
+                            <div class="corner corner-br"></div>
+                        </div>
+                    </div>
+                    <div class="cam-controls">
+                        <button class="big-btn capture-btn" id="captureBtn">
+                            <i class="fas fa-circle"></i>
+                            Capture
+                        </button>
+                        <button class="outline-btn" id="stopCamBtn">
+                            <i class="fas fa-times"></i> Cancel
+                        </button>
+                    </div>
+                    <p class="hint">Position the object clearly in the frame, then press Capture.</p>
+                </div>
+
+                <!-- State: preview captured photo -->
+                <div class="cam-state hidden" id="statePreview">
+                    <div class="video-frame">
+                        <canvas id="photoCanvas"></canvas>
+                    </div>
+                    <div class="cam-controls">
+                        <a id="downloadBtn" class="big-btn download-btn" download="cheops_capture.png">
+                            <i class="fas fa-download"></i>
+                            Download Photo
+                        </a>
+                        <button class="outline-btn" id="retakeBtn">
+                            <i class="fas fa-redo"></i> Retake
+                        </button>
+                    </div>
+                    <p class="hint success-hint">
+                        <i class="fas fa-check-circle"></i>
+                        Photo captured! Download it, then use it with <code>runcv.py</code> as shown below.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── SECTION 2: Setup Guide ── -->
+        <section class="device-section guide-section">
+            <div class="section-header">
+                <i class="fas fa-terminal section-icon"></i>
+                <h2>Run runcv.py on Your Device</h2>
+                <p>Follow these steps to generate a 3D model from the photo you just captured.</p>
+            </div>
+
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-num">1</div>
+                    <h3>Clone the Repository</h3>
+                    <div class="code-block">
+                        <button class="copy-btn" data-target="cmd1" title="Copy"><i class="fas fa-copy"></i></button>
+                        <code id="cmd1">git clone https://github.com/cheops2026-alt/Photogrammetric-3D-Model-</code>
+                    </div>
+                    <a href="https://github.com/cheops2026-alt/Photogrammetric-3D-Model-"
+                       target="_blank" class="step-link">
+                        <i class="fab fa-github"></i> View on GitHub
+                    </a>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-num">2</div>
+                    <h3>Install Requirements</h3>
+                    <p class="step-note">Python ≥ 3.8 required. Install CUDA if available.</p>
+                    <div class="code-block">
+                        <button class="copy-btn" data-target="cmd2" title="Copy"><i class="fas fa-copy"></i></button>
+                        <code id="cmd2">pip install -r requirements.txt
+pip install opencv-python</code>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-num">3</div>
+                    <h3>Run with Your Photo</h3>
+                    <p class="step-note">Replace <em>photo.png</em> with your downloaded filename.</p>
+                    <div class="code-block">
+                        <button class="copy-btn" data-target="cmd3" title="Copy"><i class="fas fa-copy"></i></button>
+                        <code id="cmd3">python runcv.py cheops_capture.png --output-dir output/</code>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-num">4</div>
+                    <h3>Or Use Live Webcam</h3>
+                    <p class="step-note">Opens your camera directly. Press <kbd>SPACE</kbd> or <kbd>S</kbd> to capture.</p>
+                    <div class="code-block">
+                        <button class="copy-btn" data-target="cmd4" title="Copy"><i class="fas fa-copy"></i></button>
+                        <code id="cmd4">python runcv.py</code>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key options table -->
+            <div class="options-table-wrap">
+                <h3 class="options-title">Key Options</h3>
+                <table class="options-table">
+                    <thead>
+                        <tr>
+                            <th>Option</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><code>--capture</code></td><td>Explicitly use webcam capture mode</td></tr>
+                        <tr><td><code>--camera N</code></td><td>Use camera device ID (default: 0)</td></tr>
+                        <tr><td><code>--no-bake-texture</code></td><td>Use vertex colors — faster generation</td></tr>
+                        <tr><td><code>--no-viewer</code></td><td>Skip opening the 3D viewer after generation</td></tr>
+                        <tr><td><code>--output-dir path/</code></td><td>Where to save the 3D model</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <div class="back-row">
+            <a href="try-us.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Try Us</a>
+        </div>
+    </main>
+
+    <div id="copyToast" class="copy-toast">Copied!</div>
+
+    <script>
+        // ── Camera logic ──
+        const startBtn   = document.getElementById('startCamBtn');
+        const stopBtn    = document.getElementById('stopCamBtn');
+        const captureBtn = document.getElementById('captureBtn');
+        const retakeBtn  = document.getElementById('retakeBtn');
+        const downloadBtn= document.getElementById('downloadBtn');
+        const video      = document.getElementById('camVideo');
+        const canvas     = document.getElementById('photoCanvas');
+        const ctx        = canvas.getContext('2d');
+
+        const stateStart   = document.getElementById('stateStart');
+        const stateLive    = document.getElementById('stateLive');
+        const statePreview = document.getElementById('statePreview');
+
+        let stream = null;
+
+        function showState(el) {
+            [stateStart, stateLive, statePreview].forEach(s => s.classList.add('hidden'));
+            el.classList.remove('hidden');
+        }
+
+        async function startCamera() {
+            try {
+                stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' }, audio: false });
+                video.srcObject = stream;
+                showState(stateLive);
+            } catch (err) {
+                alert('Could not access camera: ' + err.message);
+            }
+        }
+
+        function stopCamera() {
+            if (stream) {
+                stream.getTracks().forEach(t => t.stop());
+                stream = null;
+            }
+        }
+
+        function capturePhoto() {
+            canvas.width  = video.videoWidth  || 640;
+            canvas.height = video.videoHeight || 480;
+            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+            stopCamera();
+            const dataUrl = canvas.toDataURL('image/png');
+            downloadBtn.href = dataUrl;
+            showState(statePreview);
+        }
+
+        startBtn.addEventListener('click', startCamera);
+        stopBtn.addEventListener('click', () => { stopCamera(); showState(stateStart); });
+        captureBtn.addEventListener('click', capturePhoto);
+        retakeBtn.addEventListener('click', () => { startCamera(); });
+
+        // ── Copy buttons ──
+        const toast = document.getElementById('copyToast');
+        let toastTimer;
+
+        document.querySelectorAll('.copy-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const target = document.getElementById(btn.dataset.target);
+                navigator.clipboard.writeText(target.textContent.trim()).then(() => {
+                    clearTimeout(toastTimer);
+                    toast.classList.add('visible');
+                    toastTimer = setTimeout(() => toast.classList.remove('visible'), 2000);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
