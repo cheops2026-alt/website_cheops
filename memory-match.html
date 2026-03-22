@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Memory Match — Cheops</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(145deg, #1a1410, #2d2318);
+      color: #f5f5f5;
+      padding: 20px;
+    }
+    h1 { color: #FDB931; text-align: center; margin-bottom: 8px; }
+    .sub { text-align: center; color: #c9bba8; margin-bottom: 16px; font-size: 14px; }
+    .stats { text-align: center; margin-bottom: 16px; color: #FDB931; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      max-width: 520px;
+      margin: 0 auto 24px;
+    }
+    .card {
+      aspect-ratio: 1;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #3a3020, #1e1810);
+      border: 2px solid rgba(253, 185, 49, 0.4);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      transition: transform 0.2s;
+      user-select: none;
+    }
+    .card.flipped, .card.matched { background: rgba(253, 185, 49, 0.15); }
+    .card:not(.flipped):not(.matched) { color: transparent; }
+    .card:not(.flipped):not(.matched)::after { content: "?"; color: #FDB931; font-size: 22px; }
+    .card.matched { opacity: 0.45; cursor: default; }
+    .back { text-align: center; }
+    .back a {
+      display: inline-block;
+      padding: 10px 20px;
+      background: linear-gradient(135deg, #FDB931, #FFD700);
+      color: #1a1410;
+      text-decoration: none;
+      border-radius: 22px;
+      font-weight: 700;
+    }
+    @media (max-width: 480px) {
+      .grid { grid-template-columns: repeat(3, 1fr); }
+    }
+  </style>
+</head>
+<body>
+  <h1>Memory Match</h1>
+  <p class="sub">Find all matching pairs. Tap two cards.</p>
+  <p class="stats">Moves: <span id="moves">0</span> · Pairs: <span id="pairs">0</span>/8</p>
+  <div class="grid" id="grid"></div>
+  <p class="back"><a href="play.html">Back to Games</a></p>
+  <script>
+    const symbols = ["𓀀","𓁹","𓂀","𓃀","𓄿","𓅓","𓆣","𓇋"];
+    const deck = [...symbols, ...symbols].sort(() => Math.random() - 0.5);
+    const grid = document.getElementById("grid");
+    let flipped = [], moves = 0, matched = 0, lock = false;
+
+    deck.forEach((sym, i) => {
+      const el = document.createElement("div");
+      el.className = "card";
+      el.dataset.sym = sym;
+      el.dataset.i = i;
+      el.addEventListener("click", () => flip(el));
+      grid.appendChild(el);
+    });
+
+    function flip(el) {
+      if (lock || el.classList.contains("matched") || el.classList.contains("flipped")) return;
+      el.classList.add("flipped");
+      el.textContent = el.dataset.sym;
+      flipped.push(el);
+      if (flipped.length < 2) return;
+      moves++;
+      document.getElementById("moves").textContent = moves;
+      lock = true;
+      const [a, b] = flipped;
+      if (a.dataset.sym === b.dataset.sym) {
+        a.classList.add("matched");
+        b.classList.add("matched");
+        matched++;
+        document.getElementById("pairs").textContent = matched;
+        flipped = [];
+        lock = false;
+        if (matched === 8) setTimeout(() => alert("You found all pairs! Great job!"), 200);
+      } else {
+        setTimeout(() => {
+          a.classList.remove("flipped");
+          b.classList.remove("flipped");
+          a.textContent = "";
+          b.textContent = "";
+          flipped = [];
+          lock = false;
+        }, 700);
+      }
+    }
+  </script>
+</body>
+</html>

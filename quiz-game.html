@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Challenge — Cheops</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(145deg, #1a1410, #2d2318);
+      color: #f5f5f5;
+      padding: 24px 16px;
+    }
+    .wrap { max-width: 520px; margin: 0 auto; }
+    h1 { color: #FDB931; text-align: center; margin-bottom: 20px; }
+    .q { background: rgba(20,16,12,0.9); border: 2px solid rgba(253,185,49,0.35);
+      border-radius: 14px; padding: 20px; margin-bottom: 16px; }
+    .q p { margin-bottom: 14px; line-height: 1.5; }
+    button.opt {
+      display: block; width: 100%; margin: 8px 0; padding: 12px 14px;
+      border-radius: 10px; border: 1px solid rgba(253,185,49,0.4);
+      background: rgba(253,185,49,0.1); color: #f5f5f5; font-family: inherit;
+      font-size: 15px; cursor: pointer; text-align: left;
+    }
+    button.opt:hover { background: rgba(253,185,49,0.25); }
+    .score { text-align: center; color: #FDB931; margin-bottom: 12px; }
+    .back { text-align: center; margin-top: 20px; }
+    .back a {
+      display: inline-block; padding: 10px 20px;
+      background: linear-gradient(135deg, #FDB931, #FFD700); color: #1a1410;
+      text-decoration: none; border-radius: 22px; font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Quiz Challenge</h1>
+    <p class="score">Score: <span id="score">0</span> / <span id="total">5</span></p>
+    <div id="quiz"></div>
+    <p class="back"><a href="play.html">Back to Games</a></p>
+  </div>
+  <script>
+    const questions = [
+      { q: "Photogrammetry is mainly used to:", a: ["Record sound", "Build 3D models from photos", "Print metal parts"], c: 1 },
+      { q: "The Great Pyramid of Giza was built for which pharaoh?", a: ["Tutankhamun", "Khufu", "Ramses II"], c: 1 },
+      { q: "SPIKE Prime robots are programmed using:", a: ["Only Python", "Scratch-based or Python in the LEGO app", "Excel"], c: 1 },
+      { q: "Reverse engineering in archaeology can help:", a: ["Ignore old objects", "Understand how artifacts were made", "Skip documentation"], c: 1 },
+      { q: "FLL stands for:", a: ["First Lego League", "Fast Learning Lab", "Field Laser Lab"], c: 0 },
+    ];
+    let i = 0, score = 0;
+    const quizEl = document.getElementById("quiz");
+
+    function show() {
+      if (i >= questions.length) {
+        quizEl.innerHTML = "<div class='q'><p><strong>Finished!</strong> Your score: " + score + " / " + questions.length + "</p></div>";
+        return;
+      }
+      const Q = questions[i];
+      let html = "<div class='q'><p><strong>Q" + (i+1) + ".</strong> " + Q.q + "</p>";
+      Q.a.forEach((text, idx) => {
+        html += "<button type='button' class='opt' data-ok='" + (idx === Q.c) + "'>" + text + "</button>";
+      });
+      html += "</div>";
+      quizEl.innerHTML = html;
+      quizEl.querySelectorAll(".opt").forEach(btn => {
+        btn.addEventListener("click", () => {
+          if (btn.dataset.ok === "true") score++;
+          document.getElementById("score").textContent = score;
+          i++;
+          show();
+        });
+      });
+    }
+    show();
+  </script>
+</body>
+</html>

@@ -21,14 +21,27 @@
 
     <main class="coming-page">
         <section class="coming-card">
-            <h1>Explore Model</h1>
+            <h1 id="modelPageTitle">Explore Model</h1>
             <p>Drag to rotate, scroll to zoom, and right-click drag to pan around the model.</p>
             <div class="explore-model-viewer" id="exploreModelViewer" aria-label="Interactive 3D mask model">
                 <div class="viewer-status" id="exploreViewerStatus">Loading 3D model...</div>
-                <div class="axes-hud" id="axesHud">
-                    <span class="axis-x">X: <span id="axisX">0.00</span></span>
-                    <span class="axis-y">Y: <span id="axisY">0.00</span></span>
-                    <span class="axis-z">Z: <span id="axisZ">0.00</span></span>
+                <div class="axes-hud" id="axesHud" aria-live="polite">
+                    <div class="hud-block">
+                        <span class="hud-label">Camera (world)</span>
+                        <div class="hud-row">
+                            <span class="axis-x">X <span id="axisX">0.00</span></span>
+                            <span class="axis-y">Y <span id="axisY">0.00</span></span>
+                            <span class="axis-z">Z <span id="axisZ">0.00</span></span>
+                        </div>
+                    </div>
+                    <div class="hud-block">
+                        <span class="hud-label">Orbit &amp; zoom</span>
+                        <div class="hud-row hud-row-2">
+                            <span class="axis-dist">Dist <span id="axisDist">0.00</span></span>
+                            <span class="axis-az">Az° <span id="axisAz">0.0</span></span>
+                            <span class="axis-pol">Pol° <span id="axisPol">0.0</span></span>
+                        </div>
+                    </div>
                 </div>
             </div>
             <a href="library.html" class="back-btn">Back To Library</a>
@@ -43,5 +56,18 @@
     }
     </script>
     <script type="module" src="explore-viewer.js"></script>
+    <script>
+      (function () {
+        const titles = {
+          pharaoh: "King Tutankhamun mask",
+          PharaonicObelisk: "Pharaonic Obelisk",
+          PyramidArtifact: "Pyramid Artifact",
+          GoldenSarcophagus: "Golden Sarcophagus"
+        };
+        const p = new URLSearchParams(location.search).get("model") || "pharaoh";
+        const el = document.getElementById("modelPageTitle");
+        if (el && titles[p]) el.textContent = titles[p];
+      })();
+    </script>
 </body>
 </html>

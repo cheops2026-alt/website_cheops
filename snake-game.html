@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pyramid Snake — Cheops</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+      background: #1a1410;
+      color: #f5f5f5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 16px;
+    }
+    h1 { color: #FDB931; margin-bottom: 8px; font-size: 22px; }
+    .hint { color: #a09078; font-size: 13px; margin-bottom: 12px; text-align: center; }
+    canvas {
+      border: 3px solid rgba(253, 185, 49, 0.5);
+      border-radius: 8px;
+      background: #0d0a08;
+      max-width: 100%;
+      touch-action: none;
+    }
+    .score { color: #FDB931; margin: 12px 0; }
+    .back a {
+      display: inline-block; padding: 10px 20px;
+      background: linear-gradient(135deg, #FDB931, #FFD700); color: #1a1410;
+      text-decoration: none; border-radius: 22px; font-weight: 700; margin-top: 12px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Pyramid Snake</h1>
+  <p class="hint">Use arrow keys or swipe. Eat the golden dots!</p>
+  <p class="score">Score: <span id="sc">0</span></p>
+  <canvas id="c" width="360" height="360"></canvas>
+  <p class="back"><a href="play.html">Back to Games</a></p>
+  <script>
+    const canvas = document.getElementById("c");
+    const ctx = canvas.getContext("2d");
+    const gs = 18;
+    let cols = Math.floor(canvas.width / gs), rows = Math.floor(canvas.height / gs);
+    let snake = [{x:8,y:8}], dir = {x:1,y:0}, food = {x:12,y:10}, score = 0, tick = 0;
+
+    function placeFood() {
+      food = {
+        x: Math.floor(Math.random() * cols),
+        y: Math.floor(Math.random() * rows)
+      };
+      if (snake.some(s => s.x === food.x && s.y === food.y)) placeFood();
+    }
+
+    function step() {
+      const head = { x: snake[0].x + dir.x, y: snake[0].y + dir.y };
+      if (head.x < 0 || head.x >= cols || head.y < 0 || head.y >= rows ||
+          snake.some(s => s.x === head.x && s.y === head.y)) {
+        alert("Game over! Score: " + score);
+        snake = [{x:8,y:8}]; dir = {x:1,y:0}; score = 0;
+        document.getElementById("sc").textContent = 0;
+        placeFood();
+        return;
+      }
+      snake.unshift(head);
+      if (head.x === food.x && head.y === food.y) {
+        score++;
+        document.getElementById("sc").textContent = score;
+        placeFood();
+      } else snake.pop();
+    }
+
+    function draw() {
+      ctx.fillStyle = "#0d0a08";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "#FDB931";
+      ctx.fillRect(food.x * gs, food.y * gs, gs - 1, gs - 1);
+      snake.forEach((seg, i) => {
+        ctx.fillStyle = i === 0 ? "#FFD700" : "#c9a227";
+        ctx.fillRect(seg.x * gs, seg.y * gs, gs - 1, gs - 1);
+      });
+    }
+
+    function loop() {
+      tick++;
+      if (tick % 8 === 0) step();
+      draw();
+      requestAnimationFrame(loop);
+    }
+
+    document.addEventListener("keydown", e => {
+      if (e.key === "ArrowUp" && dir.y === 0) dir = {x:0,y:-1};
+      if (e.key === "ArrowDown" && dir.y === 0) dir = {x:0,y:1};
+      if (e.key === "ArrowLeft" && dir.x === 0) dir = {x:-1,y:0};
+      if (e.key === "ArrowRight" && dir.x === 0) dir = {x:1,y:0};
+    });
+
+    let tx, ty;
+    canvas.addEventListener("touchstart", e => {
+      const t = e.touches[0];
+      tx = t.clientX; ty = t.clientY;
+    }, {passive:true});
+    canvas.addEventListener("touchend", e => {
+      const t = e.changedTouches[0];
+      const dx = t.clientX - tx, dy = t.clientY - ty;
+      if (Math.abs(dx) > Math.abs(dy)) {
+        if (dx > 20 && dir.x === 0) dir = {x:1,y:0};
+        if (dx < -20 && dir.x === 0) dir = {x:-1,y:0};
+      } else {
+        if (dy > 20 && dir.y === 0) dir = {x:0,y:1};
+        if (dy < -20 && dir.y === 0) dir = {x:0,y:-1};
+      }
+    }, {passive:true});
+
+    placeFood();
+    loop();
+  </script>
+</body>
+</html>

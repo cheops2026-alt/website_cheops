@@ -1479,6 +1479,14 @@ body.rtl .header-nav {
 	animation: fadeInUp 1s ease 0.5s both;
 }
 
+.team-actions-row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 16px;
+	justify-content: center;
+	align-items: center;
+}
+
 .team-actions .custom-btn {
 	text-decoration: none;
 	display: inline-block;

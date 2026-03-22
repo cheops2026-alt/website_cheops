@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reaction Rush — Cheops</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(145deg, #1a1410, #2d2318);
+      color: #f5f5f5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    h1 { color: #FDB931; margin-bottom: 8px; }
+    #box {
+      width: min(92vw, 320px);
+      height: 200px;
+      border-radius: 16px;
+      background: #2a2218;
+      border: 3px solid rgba(253,185,49,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      font-weight: 700;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.15s;
+    }
+    #box.ready { background: linear-gradient(135deg, #FDB931, #e6a020); color: #1a1410; }
+    .res { margin-top: 16px; color: #c9bba8; min-height: 24px; }
+    .back { margin-top: 20px; }
+    .back a {
+      display: inline-block; padding: 10px 20px;
+      background: linear-gradient(135deg, #FDB931, #FFD700); color: #1a1410;
+      text-decoration: none; border-radius: 22px; font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <h1>Reaction Rush</h1>
+  <p style="color:#a09078;margin-bottom:12px;text-align:center;max-width:320px;font-size:14px;">
+    Tap the box as soon as it turns <strong>gold</strong>. Wait for it — don’t tap too early!
+  </p>
+  <div id="box">Wait…</div>
+  <p class="res" id="res"></p>
+  <p class="back"><a href="play.html">Back to Games</a></p>
+  <script>
+    const box = document.getElementById("box");
+    const res = document.getElementById("res");
+    let state = "idle", t0 = 0, timeout;
+
+    function reset() {
+      state = "idle";
+      box.classList.remove("ready");
+      box.textContent = "Wait…";
+      res.textContent = "";
+      const delay = 1500 + Math.random() * 2500;
+      timeout = setTimeout(() => {
+        state = "go";
+        box.classList.add("ready");
+        box.textContent = "TAP!";
+        t0 = performance.now();
+      }, delay);
+    }
+
+    box.addEventListener("click", () => {
+      if (state === "idle") {
+        clearTimeout(timeout);
+        res.textContent = "Too early! Try again.";
+        setTimeout(reset, 900);
+        return;
+      }
+      if (state === "go") {
+        const ms = Math.round(performance.now() - t0);
+        res.textContent = "Your time: " + ms + " ms — nice!";
+        state = "done";
+        setTimeout(reset, 1800);
+      }
+    });
+
+    reset();
+  </script>
+</body>
+</html>
