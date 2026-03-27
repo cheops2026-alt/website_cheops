@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title data-en="Core Values — Cheops" data-ar="القيم الأساسية — كيوبس">Core Values — Cheops</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="stylesheet" href="subpage-common.css">
@@ -103,25 +103,24 @@
       <div class="cv-section-text cv-teamwork-copy cv-reveal">
         <h2 data-en="Teamwork" data-ar="العمل الجماعي">Teamwork</h2>
         <p data-en="We worked together to solve big challenges. For example, when our first robot hub didn't work well, we didn't give up. We helped each other change it four times until we found the best one. We divide the work fairly and support each other so we can stay focused and happy." data-ar="عملنا معًا لحل تحديات كبيرة. على سبيل المثال، عندما لم يعمل الروبوت الرئيسي الأول بشكل جيد، لم نستسلم. ساعدنا بعضنا على تغييره أربع مرات حتى وجدنا الأفضل. نوزع العمل بعدل وندعم بعضنا حتى نبقى مركزين وسعداء.">We worked together to solve big challenges. For example, when our first robot hub didn't work well, we didn't give up. We helped each other change it four times until we found the best one. We divide the work fairly and support each other so we can stay focused and happy.</p>
-        <p class="cv-teamwork-hint" data-en="Scroll through the photo gallery for more teamwork moments." data-ar="مرّر في معرض الصور لمزيد من لحظات العمل الجماعي.">Scroll through the photo gallery for more teamwork moments.</p>
+        <p class="cv-teamwork-hint" data-en="Drag the top photo aside with your finger or mouse to see the next one." data-ar="اسحب الصورة العلوية جانبًا بالإصبع أو الفأرة لرؤية التالية.">Drag the top photo aside with your finger or mouse to see the next one.</p>
       </div>
       <div class="cv-teamwork-media cv-reveal" data-teamwork-stack>
-        <div class="cv-teamwork-scroll-track" id="cvTeamworkScrollTrack">
-          <div class="cv-teamwork-sticky">
-            <div class="cv-teamwork-stack" id="cvTeamworkStack" role="img" aria-label="Teamwork photo stack">
-              <img class="cv-stack-layer" src="assets/CORE VALUES/Teamwork1 (1).jpeg" data-en="Teamwork — students collaborating at a table" data-ar="العمل الجماعي — الطلاب يتعاونون على الطاولة" alt="Teamwork — students collaborating at a table" decoding="async">
-              <img class="cv-stack-layer" src="assets/CORE VALUES/Teamwork1 (2).jpeg" data-en="Teamwork — hands-on project on the floor" data-ar="العمل الجماعي — مشروع عملي على الأرضية" alt="Teamwork — hands-on project on the floor" decoding="async">
-              <img class="cv-stack-layer" src="assets/CORE VALUES/Teamwork1 (3).jpeg" data-en="Teamwork — mixing materials together" data-ar="العمل الجماعي — خلط المواد معًا" alt="Teamwork — mixing materials together" decoding="async">
-              <img class="cv-stack-layer" src="assets/CORE VALUES/Teamwork1 (4).jpeg" data-en="Teamwork — robotics parts and collaboration" data-ar="العمل الجماعي — قطع الروبوت والتعاون" alt="Teamwork — robotics parts and collaboration" decoding="async">
-              <img class="cv-stack-layer" src="assets/CORE VALUES/Teamwork1 (5).jpeg" data-en="Teamwork — measuring large boards" data-ar="العمل الجماعي — قياس اللوحات الكبيرة" alt="Teamwork — measuring large boards" decoding="async">
-              <img class="cv-stack-layer" src="assets/CORE VALUES/Teamwork1 (6).jpeg" data-en="Teamwork — pyramid craft project" data-ar="العمل الجماعي — مشروع هرمة" alt="Teamwork — pyramid craft project" decoding="async">
-              <img class="cv-stack-layer" src="assets/CORE VALUES/Teamwork1 (7).jpeg" data-en="Teamwork — building the robot together" data-ar="العمل الجماعي — بناء الروبوت معًا" alt="Teamwork — building the robot together" decoding="async">
+        <div class="cv-teamwork-drag-shell">
+          <div class="cv-teamwork-stack-stage">
+            <div class="cv-teamwork-stack" id="cvTeamworkStack" role="group" aria-label="Teamwork photos: drag the top photo aside to reveal the next.">
+              <img class="cv-stack-layer" src="assets/CORE VALUES/Teamwork1 (1).jpeg" alt="" draggable="false" decoding="async">
+              <img class="cv-stack-layer" src="assets/CORE VALUES/Teamwork1 (2).jpeg" alt="" draggable="false" decoding="async">
+              <img class="cv-stack-layer" src="assets/CORE VALUES/Teamwork1 (3).jpeg" alt="" draggable="false" decoding="async">
+              <img class="cv-stack-layer" src="assets/CORE VALUES/Teamwork1 (4).jpeg" alt="" draggable="false" decoding="async">
+              <img class="cv-stack-layer" src="assets/CORE VALUES/Teamwork1 (5).jpeg" alt="" draggable="false" decoding="async">
+              <img class="cv-stack-layer" src="assets/CORE VALUES/Teamwork1 (6).jpeg" alt="" draggable="false" decoding="async">
+              <img class="cv-stack-layer" src="assets/CORE VALUES/Teamwork1 (7).jpeg" alt="" draggable="false" decoding="async">
             </div>
             <div class="cv-stack-cta" id="cvTeamworkCta" aria-hidden="true">
-              <p class="cv-stack-cta-text" data-en="Want more? See our social media!" data-ar="تريد المزيد؟ تفقد وسائل التواصل الاجتماعي!">Want more? See our social media!</p>
-              <a href="#cv-social-footer" class="cv-stack-cta-btn subpage-btn subpage-btn-home">
-                <i class="fas fa-share-alt"></i>
-                <span data-en="Go to social media" data-ar="انتقل إلى وسائل التواصل">Go to social media</span>
+              <a href="#cv-social-footer" class="cv-stack-cta-link">
+                <span class="cv-stack-cta-copy" data-en="Want more? See our social media" data-ar="تريد المزيد؟ تفقد وسائل التواصل الاجتماعي">Want more? See our social media</span>
+                <span class="cv-stack-cta-arrow" aria-hidden="true"><i class="fas fa-arrow-down"></i></span>
               </a>
             </div>
           </div>
