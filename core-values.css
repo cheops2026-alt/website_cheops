@@ -407,3 +407,185 @@ main {
     font-size: 0.95rem;
   }
 }
+
+/* —— Teamwork: scroll-through photo stack —— */
+.cv-section-teamwork {
+  align-items: start;
+}
+
+.cv-teamwork-copy .cv-teamwork-hint {
+  margin-top: 14px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: rgba(253, 185, 49, 0.9);
+  font-style: normal;
+}
+
+.cv-teamwork-media {
+  width: 100%;
+  min-width: 0;
+}
+
+.cv-teamwork-scroll-track {
+  min-height: 720vh;
+  position: relative;
+}
+
+.cv-teamwork-sticky {
+  position: sticky;
+  top: 72px;
+  min-height: calc(100vh - 72px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 0 40px;
+  box-sizing: border-box;
+}
+
+.cv-teamwork-stack {
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+  aspect-ratio: 4 / 3;
+  margin: 0 auto;
+  border-radius: 16px;
+}
+
+.cv-stack-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 2px solid rgba(253, 185, 49, 0.48);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.52);
+  will-change: opacity, transform;
+}
+
+.cv-teamwork-stack .cv-stack-layer:nth-child(1) { z-index: 7; }
+.cv-teamwork-stack .cv-stack-layer:nth-child(2) { z-index: 6; }
+.cv-teamwork-stack .cv-stack-layer:nth-child(3) { z-index: 5; }
+.cv-teamwork-stack .cv-stack-layer:nth-child(4) { z-index: 4; }
+.cv-teamwork-stack .cv-stack-layer:nth-child(5) { z-index: 3; }
+.cv-teamwork-stack .cv-stack-layer:nth-child(6) { z-index: 2; }
+.cv-teamwork-stack .cv-stack-layer:nth-child(7) { z-index: 1; }
+
+.cv-stack-cta {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 6%;
+  z-index: 30;
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 22px 18px;
+  text-align: center;
+  background: rgba(10, 8, 6, 0.92);
+  border: 1px solid rgba(253, 185, 49, 0.45);
+  border-radius: 14px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(12px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  backdrop-filter: blur(8px);
+}
+
+.cv-stack-cta.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.cv-stack-cta-text {
+  color: #efe7db;
+  margin: 0 0 16px;
+  line-height: 1.55;
+  font-size: 1.06rem;
+}
+
+a.cv-stack-cta-btn {
+  justify-content: center;
+  text-decoration: none;
+  width: 100%;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+/* —— Social footer —— */
+.cv-social-section {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 48px 20px 72px;
+  text-align: center;
+}
+
+#cv-social-footer {
+  scroll-margin-top: 88px;
+}
+
+.cv-social-title {
+  font-size: clamp(1.2rem, 3.2vw, 1.7rem);
+  color: #FDB931;
+  margin: 0 0 26px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.cv-social-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px 22px;
+  flex-wrap: wrap;
+}
+
+.cv-social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  font-size: 23px;
+  text-decoration: none;
+  color: #fff;
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+  border: 2px solid rgba(253, 185, 49, 0.42);
+}
+
+.cv-social-icon.facebook {
+  background: linear-gradient(145deg, #1877f2, #0e55a8);
+}
+
+.cv-social-icon.instagram {
+  background: linear-gradient(145deg, #fccc63, #e1306c, #833ab4);
+}
+
+.cv-social-icon.tiktok {
+  background: linear-gradient(145deg, #25f4ee, #fe2c55);
+}
+
+.cv-social-icon:hover {
+  transform: translateY(-4px) scale(1.07);
+  box-shadow: 0 12px 32px rgba(253, 185, 49, 0.32);
+}
+
+@media (max-width: 900px) {
+  .cv-section-teamwork .cv-teamwork-media {
+    order: 1;
+  }
+
+  .cv-section-teamwork .cv-teamwork-copy {
+    order: 2;
+  }
+
+  .cv-teamwork-sticky {
+    top: 64px;
+    min-height: calc(100vh - 64px);
+  }
+
+  .cv-teamwork-scroll-track {
+    min-height: 660vh;
+  }
+}
