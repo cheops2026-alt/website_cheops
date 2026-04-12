@@ -42,7 +42,7 @@
     : 64;
 
   /* Fixed tilt per photo (~45° total spread across the deck) */
-  const BASE_ROT = [-22.5, -15, -7.5, 0, 7.5, 15, 22.5];
+  const BASE_ROT = [-22.5, -13.5, -4.5, 4.5, 13.5, 22.5];
 
   function layerBaseTransform(i) {
     const deg = BASE_ROT[i] ?? 0;
