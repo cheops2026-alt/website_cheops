@@ -146,6 +146,7 @@
   margin: 0 auto;
 }
 
+/* Match Teamwork stack cards (.cv-stack-layer): same frame, radius, and shadow */
 .cv-value-gallery img {
   width: 100%;
   max-height: none;
@@ -154,27 +155,29 @@
   object-fit: cover;
   object-position: center;
   padding: 0;
-  border-radius: 12px;
-  border: 2px solid rgba(253, 185, 49, 0.4);
-  background: rgba(0, 0, 0, 0.18);
+  border-radius: 14px;
+  border: 2px solid rgba(253, 185, 49, 0.48);
+  background: transparent;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.52);
   animation: none;
-  transition: transform 0.35s ease, box-shadow 0.35s ease, filter 0.35s ease;
-}
-
-.cv-section.is-visible .cv-value-gallery img {
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.32);
+  transform-origin: center center;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.4s ease;
 }
 
 .cv-section.is-visible .cv-value-gallery img:hover {
-  transform: scale(1.03);
-  filter: brightness(1.04);
+  transform: scale(1.02);
+  filter: brightness(1.05);
+  box-shadow: 0 22px 56px rgba(0, 0, 0, 0.58);
 }
 
-.cv-section.is-visible .cv-section-media img {
+/* Single image in media column only (not gallery thumbnails) */
+.cv-section.is-visible .cv-section-media > img {
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
 }
 
-.cv-section.is-visible .cv-section-media img:hover {
+.cv-section.is-visible .cv-section-media > img:hover {
   transform: scale(1.02);
 }
 
