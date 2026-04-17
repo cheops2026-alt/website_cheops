@@ -1,3 +1,8 @@
+/**
+ * explore-viewer.js — Three.js GLTF viewer for library / explore page (#exploreModelViewer)
+ *
+ * OrbitControls, lights, optional axes HUD; loads a .glb/.gltf model.
+ */
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";

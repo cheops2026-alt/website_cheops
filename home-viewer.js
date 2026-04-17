@@ -1,3 +1,8 @@
+/**
+ * home-viewer.js — Three.js OBJ+MTL viewer for home page hero (#homeModelViewer)
+ *
+ * Transparent canvas; drag to orbit the loaded mesh.
+ */
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { OBJLoader } from "three/addons/loaders/OBJLoader.js";

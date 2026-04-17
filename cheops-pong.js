@@ -1,3 +1,8 @@
+/**
+ * cheops-pong.js — Canvas 2D Pong for cheops-pong.html
+ *
+ * Player vs AI, pause/restart, responsive canvas sizing.
+ */
 const canvas = document.getElementById('pongCanvas');
 const ctx = canvas.getContext('2d');
 const pauseBtn = document.getElementById('pauseBtn');

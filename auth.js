@@ -1,4 +1,10 @@
-// Firebase Configuration for Cheops Project
+/**
+ * auth.js — Firebase Auth for index.html (sign up / sign in)
+ *
+ * signUpBtn: create account, optional Firestore user doc, redirect to home.html
+ * signInBtn: email/password sign-in, redirect to home.html
+ * Uses ES module imports from gstatic Firebase SDK v12.
+ */
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js';
 import { 
     getAuth, 

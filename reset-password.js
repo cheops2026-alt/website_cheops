@@ -1,4 +1,8 @@
-// Firebase Configuration for Password Reset
+/**
+ * reset-password.js — Password reset flow for reset-password.html
+ *
+ * Sends Firebase password-reset email; shows inline success/error messages.
+ */
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js';
 import { 
     getAuth, 

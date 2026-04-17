@@ -1,3 +1,12 @@
+/**
+ * core-values.js — Core Values page interactions
+ *
+ * 1) Hero: immediate .is-visible; optional parallax on .cv-hero-img wrappers
+ * 2) Sections: IntersectionObserver adds .is-visible to [data-cv-section] for scroll reveals
+ * 3) Photo stacks: every [data-cv-stack] gets an isolated drag-to-peel controller (pointer events).
+ *    Optional sibling .cv-stack-cta inside .cv-teamwork-stack-stage appears when all layers are peeled
+ *    (used on Teamwork section only).
+ */
 (function () {
   const hero = document.querySelector(".cv-hero");
   if (hero) {
@@ -45,6 +54,7 @@
     return Array.from({ length: n }, (_, i) => -half + i * step);
   }
 
+  /** Binds pointer drag/peel logic to one stack element; state is closed over per instance. */
   function initPhotoStack(stack) {
     const layers = Array.from(stack.querySelectorAll(".cv-stack-layer"));
     const stage = stack.closest(".cv-teamwork-stack-stage");

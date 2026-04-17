@@ -1,5 +1,12 @@
+/**
+ * main-styles.css — Primary stylesheet for home.html (marketing / team site)
+ *
+ * Layout: header, full-page sections, team grid, contact block, responsive breakpoints.
+ * Pairs with main.js for navigation, language toggle, and contact actions.
+ */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
+/* --- Reset & global --- */
 * {
 	margin: 0;
 	padding: 0;

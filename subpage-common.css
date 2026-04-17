@@ -1,4 +1,9 @@
-/* Shared header for core-values, our-robot, etc. */
+/**
+ * subpage-common.css — Shared “subpage” chrome (any page that extends the logged-in shell)
+ *
+ * Sticky header, brand logo, Home / language / sign-out buttons, gradient body background.
+ * Import this first on pages like core-values.html, our-robot.html, then add page-specific CSS after.
+ */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 * {

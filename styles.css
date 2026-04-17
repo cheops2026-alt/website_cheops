@@ -1,5 +1,12 @@
+/**
+ * styles.css — Landing / auth UI (index.html: sign-in & sign-up)
+ *
+ * Pharaonic-themed backgrounds, card forms, and responsive tweaks for the Firebase auth page.
+ * Not used by home.html (that page uses main-styles.css).
+ */
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900');
 
+/* --- Keyframe animations (glow, float, particles) --- */
 /* Pharaonic Background Animations */
 @keyframes pharaohGlow {
   0%, 100% {
@@ -391,6 +398,7 @@ display: none;
   border-color: #FFD700;
 }
 
+/* --- Breakpoints: tablets & phones (forms, cards, auth layout) --- */
 /* Responsive Design for All Devices */
 @media screen and (max-width: 768px) {
   /* Mobile and Tablet Adjustments */

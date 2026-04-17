@@ -1,4 +1,13 @@
-// Navigation functionality
+/**
+ * main.js — Cheops home page (home.html) behavior
+ *
+ * - Single-page sections (#home, #project, #team, #contact): smooth scroll, hash URLs, active nav highlight
+ * - Language toggle (EN/AR) via data-en / data-ar on elements
+ * - Contact: mailto + WhatsApp handoff
+ * - Mobile: hamburger menu open/close
+ *
+ * Requires: home.html with matching section ids and .nav-link hrefs
+ */
 document.addEventListener('DOMContentLoaded', function () {
     // Get all navigation links and sections
     const navLinks = document.querySelectorAll('.nav-link');
@@ -80,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Language toggle functionality
+    /* --- EN/AR toggle (separate from subpage-lang.js; uses same data-en / data-ar pattern) --- */
     const langToggle = document.getElementById('langToggle');
     const currentLang = document.getElementById('currentLang');
     let isEnglish = true;
@@ -116,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Contact form functionality
+    /* --- Contact: mailto + WhatsApp handoff --- */
     const contactForm = document.getElementById('contactForm');
     const sendEmailBtn = document.getElementById('sendEmail');
     const sendWhatsAppBtn = document.getElementById('sendWhatsApp');
@@ -182,7 +191,7 @@ document.addEventListener('DOMContentLoaded', function () {
         member.style.animationDelay = `${index * 0.1}s`;
     });
 
-    // Hamburger menu toggle
+    /* --- Mobile nav hamburger --- */
     const menuToggle = document.getElementById('menuToggle');
     const headerNav = document.querySelector('.header-nav');
 

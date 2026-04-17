@@ -1,3 +1,10 @@
+/**
+ * subpage-lang.js — Lightweight EN/AR toggle for subpages that use subpage-common header
+ *
+ * Expects: #langToggle, #currentLang, and elements with data-en + data-ar (same attribute pair per element).
+ * Also updates data-title-en / data-title-ar for title attributes (e.g. icon buttons).
+ * Toggles document.documentElement.lang and body.rtl for Arabic layout.
+ */
 (function () {
   const langToggle = document.getElementById("langToggle");
   const currentLangEl = document.getElementById("currentLang");
